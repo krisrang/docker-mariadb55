@@ -29,5 +29,7 @@ EXPOSE  3306
 
 VOLUME ["/data/mysql"]
 
+ADD ./mariadb-secure /usr/bin/mariadb-secure
+ADD ./mariadb-setpass /usr/bin/mariadb-setpass
 ADD ./mariadb-start /usr/bin/mariadb-start
 CMD "/usr/bin/mariadb-start"
