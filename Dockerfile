@@ -16,13 +16,13 @@ RUN cat /proc/mounts > /etc/mtab
 RUN apt-get -y update
 RUN apt-get -y install 
 RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server
+RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y expect
 
 # Clean up
 RUN rm /usr/sbin/policy-rc.d
 
-# Default root password: can be overridden at the docker command line
-env MARIADB_ROOT_PW toor
 # Add config
+ENV MARIADB_ROOT_PW docker
 ADD ./my.cnf /etc/mysql/my.cnf
 
 EXPOSE  3306
