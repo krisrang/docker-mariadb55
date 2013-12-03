@@ -30,4 +30,4 @@ EXPOSE  3306
 VOLUME ["/data/mysql"]
 
 ADD ./mariadb-start /usr/bin/mariadb-start
-CMD ["/usr/bin/mariadb-start"]
+CMD "/usr/bin/mariadb-start"
