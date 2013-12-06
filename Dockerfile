@@ -1,4 +1,4 @@
-FROM ubuntu:precise
+FROM ubuntu:latest
 
 # Configure apt
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
@@ -23,13 +23,13 @@ RUN rm /usr/sbin/policy-rc.d
 
 # Add config
 ENV MARIADB_ROOT_PW docker
-ADD ./my.cnf /etc/mysql/my.cnf
+ADD my.cnf /etc/mysql/my.cnf
 
-EXPOSE  3306
+ADD mariadb-secure /usr/bin/mariadb-secure
+ADD mariadb-setpass /usr/bin/mariadb-setpass
+ADD mariadb-start /usr/bin/mariadb-start
 
 VOLUME ["/data/mysql"]
+EXPOSE  3306
 
-ADD ./mariadb-secure /usr/bin/mariadb-secure
-ADD ./mariadb-setpass /usr/bin/mariadb-setpass
-ADD ./mariadb-start /usr/bin/mariadb-start
-CMD "/usr/bin/mariadb-start"
+CMD /usr/bin/mariadb-start
