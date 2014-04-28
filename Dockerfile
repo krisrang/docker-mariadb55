@@ -5,7 +5,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/
 RUN apt-get -y update
 RUN apt-get -y install python-software-properties
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-RUN add-apt-repository 'deb http://ftp.osuosl.org/pub/mariadb/repo/10.0/ubuntu precise main'
+RUN add-apt-repository 'deb http://ftp.osuosl.org/pub/mariadb/repo/5.5/ubuntu precise main'
 
 # Make apt and MariaDB happy with the docker environment
 RUN echo "#!/bin/sh\nexit 101" >/usr/sbin/policy-rc.d
